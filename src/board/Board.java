@@ -1,6 +1,6 @@
 package board;
 
-public class board {
+public class Board {
     final String horizontal = "\u2500".repeat(3);
     final String vertical = "\u2502";
     final String superiorEsquerdo = "\u250C";
@@ -14,17 +14,26 @@ public class board {
     final String juncaoDeLinhaDireita = "\u2524";
     final String vazio = " ";
 
+    private Board() {
+    }
+
+    public static Board create() {
+        return new Board();
+    }
 
     public void tabuleiro(int[][] linhas) {
         this.superior();
+        this.linha(linhas[0]);
         this.meio();
+        this.linha(linhas[1]);
         this.meio();
+        this.linha(linhas[2]);
         this.inferior();
     }
 
     private void linha(int[] linha) {
+        System.out.print(vertical);
         for(int numero: linha) {
-            System.out.print(vertical);
             this.mostrarNumero(numero);
             System.out.print(vertical);
         }
