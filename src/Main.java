@@ -1,85 +1,16 @@
+import board.Board;
 
 public class Main {
     public static void main(String[] args) {
-        final String horizontal = "\u2500".repeat(3);
-        final String vertical = "\u2502";
-        final String superiorEsquerdo = "\u250C";
-        final String superiorDireito = "\u2510";
-        final String inferiorEsquerdo = "\u2514";
-        final String inferiorDireito = "\u2518";
-        final String juncaoDeLinha = "\u253C";
-        final String juncaoDeLinhaSuperior = "\u252C";
-        final String juncaoDeLinhaInferior = "\u2534";
-        final String juncaoDeLinhaEsquerda = "\u251C";
-        final String juncaoDeLinhaDireita = "\u2524";
-        final String vazio = " ";
 
-        System.out.print(superiorEsquerdo);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaSuperior);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaSuperior);
-        System.out.print(horizontal);
-        System.out.println(superiorDireito);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(5);
-        System.out.print(vazio);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(3);
-        System.out.print(vazio);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(7);
-        System.out.print(vazio);
-        System.out.println(vertical);
-        System.out.print(juncaoDeLinhaEsquerda);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinha);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinha);
-        System.out.print(horizontal);
-        System.out.println(juncaoDeLinhaDireita);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(2);
-        System.out.print(vazio);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(6);
-        System.out.print(vazio);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(4);
-        System.out.print(vazio);
-        System.out.println(vertical);
-        System.out.print(juncaoDeLinhaEsquerda);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinha);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinha);
-        System.out.print(horizontal);
-        System.out.println(juncaoDeLinhaDireita);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(1);
-        System.out.print(vazio);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(9);
-        System.out.print(vazio);
-        System.out.print(vertical);
-        System.out.print(vazio);
-        System.out.print(8);
-        System.out.print(vazio);
-        System.out.println(vertical);
-        System.out.print(inferiorEsquerdo);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaInferior);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaInferior);
-        System.out.print(horizontal);
-        System.out.println(inferiorDireito);
+    int[][] linhas = {
+            {3, 8, 4},
+            {2, 7, 5},
+            {9, 6, 1}
+    };
+
+    Board sudoku = Board.create();
+
+    sudoku.tabuleiro(linhas);
     }
 }
