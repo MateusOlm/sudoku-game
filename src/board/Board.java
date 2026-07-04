@@ -1,18 +1,6 @@
 package board;
 
 public class Board {
-    final String horizontal = "\u2500".repeat(3);
-    final String vertical = "\u2502";
-    final String superiorEsquerdo = "\u250C";
-    final String superiorDireito = "\u2510";
-    final String inferiorEsquerdo = "\u2514";
-    final String inferiorDireito = "\u2518";
-    final String juncaoDeLinha = "\u253C";
-    final String juncaoDeLinhaSuperior = "\u252C";
-    final String juncaoDeLinhaInferior = "\u2534";
-    final String juncaoDeLinhaEsquerda = "\u251C";
-    final String juncaoDeLinhaDireita = "\u2524";
-    final String vazio = " ";
 
     private Board() {
     }
@@ -32,47 +20,51 @@ public class Board {
     }
 
     private void linha(int[] linha) {
-        System.out.print(vertical);
-        for(int numero: linha) {
-            this.mostrarNumero(numero);
-            System.out.print(vertical);
+        System.out.print(BoxDrawing.VERTICAL_PESADO);
+        for(int i = 0; i < linha.length; i++) {
+            this.mostrarNumero(linha[i]);
+            if (i == linha.length - 1) {
+                System.out.print(BoxDrawing.VERTICAL_PESADO);
+            } else {
+                System.out.print(BoxDrawing.VERTICAL_LEVE);
+            }
         }
         System.out.println();
     }
 
     private void mostrarNumero(int numero) {
-        System.out.print(vazio);
+        System.out.print(BoxDrawing.ESPACO);
         System.out.print(numero);
-        System.out.print(vazio);
+        System.out.print(BoxDrawing.ESPACO);
     }
 
     private void superior() {
-        System.out.print(superiorEsquerdo);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaSuperior);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaSuperior);
-        System.out.print(horizontal);
-        System.out.println(superiorDireito);
+        System.out.print(BoxDrawing.CANTO_BAIXO_DIREITA_PESADO);
+        System.out.print(BoxDrawing.HORIZONTAL_PESADO);
+        System.out.print(BoxDrawing.BAIXO_PESADO_ESQUERDA_DIREITA);
+        System.out.print(BoxDrawing.HORIZONTAL_PESADO);
+        System.out.print(BoxDrawing.BAIXO_PESADO_ESQUERDA_DIREITA);
+        System.out.print(BoxDrawing.HORIZONTAL_PESADO);
+        System.out.println(BoxDrawing.JUNCAO_BAIXO_ESQUERDA_DIREITA_PESADO);
     }
 
     private void meio() {
-        System.out.print(juncaoDeLinhaEsquerda);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinha);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinha);
-        System.out.print(horizontal);
-        System.out.println(juncaoDeLinhaDireita);
+        System.out.print(BoxDrawing.VERTICAL_PESADA_DIREITA);
+        System.out.print(BoxDrawing.HORIZONTAL_LEVE);
+        System.out.print(BoxDrawing.JUNCAO_QUATRO_DIRECOES_LEVE);
+        System.out.print(BoxDrawing.HORIZONTAL_LEVE);
+        System.out.print(BoxDrawing.JUNCAO_QUATRO_DIRECOES_LEVE);
+        System.out.print(BoxDrawing.HORIZONTAL_LEVE);
+        System.out.println(BoxDrawing.QUATRO_DIRECOES_VERTICAL_LEVE);
     }
 
     private void inferior() {
-        System.out.print(inferiorEsquerdo);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaInferior);
-        System.out.print(horizontal);
-        System.out.print(juncaoDeLinhaInferior);
-        System.out.print(horizontal);
-        System.out.println(inferiorDireito);
+        System.out.print(BoxDrawing.CANTO_CIMA_DIREITA_PESADO);
+        System.out.print(BoxDrawing.HORIZONTAL_PESADO);
+        System.out.print(BoxDrawing.CIMA_PESADO_ESQUERDA_DIREITA);
+        System.out.print(BoxDrawing.HORIZONTAL_PESADO);
+        System.out.print(BoxDrawing.CIMA_PESADO_ESQUERDA_DIREITA);
+        System.out.print(BoxDrawing.HORIZONTAL_PESADO);
+        System.out.println(BoxDrawing.JUNCAO_CIMA_ESQUERDA_DIREITA_PESADO);
     }
 }
