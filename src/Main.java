@@ -12,18 +12,6 @@ public class Main {
         int numeroEscolhido;
         String escolha;
 
-        int[][] linhas = {
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0}
-        };
-
         while (true) {
             sudoku.tabuleiro(regras.getLinhas());
             System.out.print("Digite o número que quer adicionar (entre 1 e 9): ");
