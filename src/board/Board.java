@@ -48,22 +48,23 @@ public class Board {
         System.out.flush();
     }
 
-    public void tabuleiro(int[][][] linhas) {
+    public void tabuleiro(int[][] linhas) {
         this.superior();
-        tabuleiroRepete(linhas[0]);
-        this.meioExterno();
-        tabuleiroRepete(linhas[1]);
-        this.meioExterno();
-        tabuleiroRepete(linhas[2]);
+        for (int i = 0; i < linhas.length - 1; i++) {
+            if ((i + 1) % TAMANHO_BLOCO == 0) {
+                this.linha(linhas[i]);
+                this.meioExterno();
+            } else {
+                tabuleiroRepete(linhas[i]);
+            }
+        }
+        this.linha(linhas[linhas.length - 1]);
         this.inferior();
     }
 
-    private void tabuleiroRepete(int[][] linhas) {
-        this.linha(linhas[0]);
+    private void tabuleiroRepete(int[] linhas) {
+        this.linha(linhas);
         this.meioInterno();
-        this.linha(linhas[1]);
-        this.meioInterno();
-        this.linha(linhas[2]);
     }
 
     private void superior() {
