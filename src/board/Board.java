@@ -3,6 +3,8 @@ package board;
 public class Board {
 
     private static final int TAMANHO_BLOCO = 3;
+    private static final String ALFABETO = "  A   B   C   D   E   F   G   H   I";
+    private int numero = 1;
 
     private Board() {
     }
@@ -12,6 +14,8 @@ public class Board {
     }
 
     private void linha(int[] linha) {
+        System.out.print(this.numero);
+        System.out.print(BoxDrawing.ESPACO);
         System.out.print(BoxDrawing.VERTICAL_PESADO);
         for(int i = 0; i < linha.length; i++) {
             this.mostrarNumero(linha[i]);
@@ -21,22 +25,36 @@ public class Board {
                 System.out.print(BoxDrawing.VERTICAL_LEVE);
             }
         }
+        this.incrementoNumero();
         System.out.println();
+    }
+
+    private void incrementoNumero() {
+        if (numero == 9) {
+            this.numero = 1;
+        }else {
+            this.numero ++;
+        }
     }
 
     private void mostrarNumero(int numero) {
         System.out.print(BoxDrawing.ESPACO);
-        System.out.print(numero);
+        System.out.print(numero == 0 ? BoxDrawing.ESPACO : numero);
         System.out.print(BoxDrawing.ESPACO);
     }
 
-    public void tabuleiro(int[][] linhas) {
+    public void clear() {
+        System.out.print(BoxDrawing.CLEAR);
+        System.out.flush();
+    }
+
+    public void tabuleiro(int[][][] linhas) {
         this.superior();
-        tabuleiroRepete(linhas);
+        tabuleiroRepete(linhas[0]);
         this.meioExterno();
-        tabuleiroRepete(linhas);
+        tabuleiroRepete(linhas[1]);
         this.meioExterno();
-        tabuleiroRepete(linhas);
+        tabuleiroRepete(linhas[2]);
         this.inferior();
     }
 
@@ -49,6 +67,7 @@ public class Board {
     }
 
     private void superior() {
+        System.out.print(BoxDrawing.ESPACO_DOUBLE);
         System.out.print(BoxDrawing.CANTO_BAIXO_DIREITA_PESADO);
         this.superiorRepete();
         System.out.print(BoxDrawing.JUNCAO_BAIXO_ESQUERDA_DIREITA_PESADO);
@@ -67,6 +86,7 @@ public class Board {
     }
 
     private void inferior() {
+        System.out.print(BoxDrawing.ESPACO_DOUBLE);
         System.out.print(BoxDrawing.CANTO_CIMA_DIREITA_PESADO);
         this.inferiorRepete();
         System.out.print(BoxDrawing.JUNCAO_CIMA_ESQUERDA_DIREITA_PESADO);
@@ -74,6 +94,8 @@ public class Board {
         System.out.print(BoxDrawing.JUNCAO_CIMA_ESQUERDA_DIREITA_PESADO);
         this.inferiorRepete();
         System.out.println(BoxDrawing.CANTO_CIMA_ESQUERDA_PESADO);
+        System.out.print(BoxDrawing.ESPACO_DOUBLE);
+        System.out.println(ALFABETO);
     }
 
     private void inferiorRepete() {
@@ -85,6 +107,7 @@ public class Board {
     }
 
     private void meioInterno() {
+        System.out.print(BoxDrawing.ESPACO_DOUBLE);
         System.out.print(BoxDrawing.VERTICAL_PESADA_DIREITA);
         this.meioInternoRepete();
         System.out.print(BoxDrawing.QUATRO_DIRECOES_VERTICAL_LEVE);
@@ -103,6 +126,7 @@ public class Board {
     }
 
     private void meioExterno() {
+        System.out.print(BoxDrawing.ESPACO_DOUBLE);
         System.out.print(BoxDrawing.JUNCAO_CIMA_BAIXO_DIREITA_PESADO);
         this.meioExternoRepete();
         System.out.print(BoxDrawing.JUNCAO_QUATRO_DIRECOES_PESADO);
@@ -110,6 +134,7 @@ public class Board {
         System.out.print(BoxDrawing.JUNCAO_QUATRO_DIRECOES_PESADO);
         this.meioExternoRepete();
         System.out.println(BoxDrawing.JUNCAO_CIMA_BAIXO_ESQUERDA_PESADO);
+
     }
 
     private void meioExternoRepete() {
