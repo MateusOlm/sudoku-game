@@ -14,6 +14,7 @@ public class Main {
 
         while (true) {
             sudoku.tabuleiro(regras.getLinhas());
+
             System.out.print("Digite o número que quer adicionar (entre 1 e 9): ");
             numeroEscolhido = sc.nextInt();
 
@@ -24,6 +25,5 @@ public class Main {
 
             sudoku.clear();
         }
-
     }
 }
