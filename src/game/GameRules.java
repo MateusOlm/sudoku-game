@@ -1,7 +1,7 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Random;
 
 public class GameRules {
 
@@ -17,7 +17,11 @@ public class GameRules {
             {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
-    private GameRules() {}
+    Random rand = new Random();
+
+    private GameRules() {
+
+    }
 
     public static GameRules create() {
         return new GameRules();
@@ -37,29 +41,18 @@ public class GameRules {
     }
 
     private int colunaParaVetor(String colunaEscolhida) {
-        int colunaVetor = - 1;
-
-        switch (colunaEscolhida) {
-            case "A":
-                colunaVetor = 0;
-            case "B":
-                colunaVetor = 1;
-            case "C":
-                colunaVetor = 2;
-            case "D":
-                colunaVetor = 3;
-            case "E":
-                colunaVetor = 4;
-            case "F":
-                colunaVetor = 5;
-            case "G":
-                colunaVetor = 6;
-            case "H":
-                colunaVetor = 7;
-            case "I":
-                colunaVetor = 8;
-        }
-
-        return colunaVetor;
+        return switch (colunaEscolhida) {
+            case "A" -> 0;
+            case "B" -> 1;
+            case "C" -> 2;
+            case "D" -> 3;
+            case "E" -> 4;
+            case "F" -> 5;
+            case "G" -> 6;
+            case "H" -> 7;
+            default -> 8;
+        };
     }
+
+
 }
