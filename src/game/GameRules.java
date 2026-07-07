@@ -64,7 +64,7 @@ public class GameRules {
 
             for (int k = inicioLinhaDoBloco; k < limiteLinhaDoBloco; k++) {
                 for (int j = inicioColunaDoBloco; j < limiteColunaDoBloco; j++) {
-
+                    this.linhas[k][j] = this.gerarNumeroDaCasa();
                 }
             }
 
@@ -106,4 +106,20 @@ public class GameRules {
         return novoLimite;
     }
 
+    private int gerarNumeroDaCasa() {
+        boolean gerar = this.chanceDaCasaReceberNumero(50);
+
+        if (gerar) {
+            return this.rand.nextInt(1, 9);
+        }
+        return 0;
+    }
+
+    private boolean chanceDaCasaReceberNumero(int numero) {
+        double conversaoNumero = (double) numero / 100;
+
+        double chance = this.rand.nextDouble();
+
+        return conversaoNumero < chance;
+    }
 }
