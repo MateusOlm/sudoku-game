@@ -5,7 +5,7 @@ import java.util.*;
 
 public class GameRules {
 
-    int[][] linhas = {
+    private int[][] linhas = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -16,6 +16,8 @@ public class GameRules {
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
+
+    private int[] posicaoAtual = {0, 0};
 
     Random rand = new Random();
 
@@ -31,27 +33,28 @@ public class GameRules {
         return linhas;
     }
 
-    public void alterarTabuleiro(String escolha, int numeroEscolhido) {
-        int linhaDaEscolha = Integer.parseInt(escolha.substring(0, 1));
-        String coluna = escolha.substring(1);
-
-        int colunaVetor = colunaParaVetor(coluna.toUpperCase());
-
-        this.linhas[linhaDaEscolha - 1][colunaVetor] = numeroEscolhido;
+    public int[] getPosicaoAtual() {
+        return this.posicaoAtual;
     }
 
-    private int colunaParaVetor(String colunaEscolhida) {
-        return switch (colunaEscolhida) {
-            case "A" -> 0;
-            case "B" -> 1;
-            case "C" -> 2;
-            case "D" -> 3;
-            case "E" -> 4;
-            case "F" -> 5;
-            case "G" -> 6;
-            case "H" -> 7;
-            default -> 8;
-        };
+    public void alterarPosicaoAtual(int linha, int coluna) {
+
+        if (linha < 0 || linha > 8) {
+            return;
+        }
+        if (coluna < 0 || coluna > 8) {
+            return;
+        }
+
+        this.posicaoAtual[0] = linha;
+        this.posicaoAtual[1] = coluna;
+    }
+
+    public void alterarTabuleiro(int numeroEscolhido) {
+        int linha = this.posicaoAtual[0];
+        int coluna = this.posicaoAtual[1];
+
+        this.linhas[linha][coluna] = numeroEscolhido;
     }
 
     private void casaVazia() {
