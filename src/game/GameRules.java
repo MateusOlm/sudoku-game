@@ -19,6 +19,8 @@ public class GameRules {
 
     private int[] posicaoAtual = {0, 0};
 
+    int dificuldade = 70;
+
     Random rand = new Random();
 
     private GameRules() {
@@ -35,6 +37,12 @@ public class GameRules {
 
     public int[] getPosicaoAtual() {
         return this.posicaoAtual;
+    }
+
+    public void setDificuldade(int dificuldade) {
+        this.dificuldade = dificuldade;
+        this.limparTabuleiro();
+        this.gerarTabuleiroBackTracing(0, 0);
     }
 
     public void alterarPosicaoAtual(int linha, int coluna) {
@@ -67,7 +75,7 @@ public class GameRules {
 
             for (int k = inicioLinhaDoBloco; k < limiteLinhaDoBloco; k++) {
                 for (int j = inicioColunaDoBloco; j < limiteColunaDoBloco; j++) {
-                    boolean casaVazia = chanceDaCasaReceberNumero(70);
+                    boolean casaVazia = chanceDaCasaReceberNumero();
                     if (casaVazia) {
                         this.linhas[k][j] = 0;
                     }
@@ -94,12 +102,20 @@ public class GameRules {
         }
     }
 
-    private boolean chanceDaCasaReceberNumero(int numero) {
-        double conversaoNumero = (double) numero / 100;
+    private boolean chanceDaCasaReceberNumero() {
+        double conversaoNumero = (double) this.dificuldade / 100;
 
         double chance = this.rand.nextDouble();
 
         return conversaoNumero < chance;
+    }
+
+    private void limparTabuleiro() {
+        for (int k = 0; k < this.linhas.length; k ++) {
+            for (int j = 0; j < this.linhas[k].length; j ++) {
+                this.linhas[k][j] = 0;
+            }
+        }
     }
 
     private boolean validarRepeticao(int linha, int posicao) {
@@ -129,11 +145,6 @@ public class GameRules {
         }
 
         return true;
-    }
-
-    private int gerarNumero(List<Integer> possibilidade) {
-        int numeroAleatorio = this.rand.nextInt(0, possibilidade.size());
-        return possibilidade.get(numeroAleatorio);
     }
 
     private Set<Integer> numerosPorBlocoPorLinhaPorColuna(int linha, int coluna) {
