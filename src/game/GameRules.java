@@ -17,6 +17,8 @@ public class GameRules {
             {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    List<BoardStart> tabuleiroInicial = new ArrayList<>();
+
     private int[] posicaoAtual = {0, 0};
 
     int dificuldade = 70;
@@ -35,14 +37,29 @@ public class GameRules {
         return linhas;
     }
 
+    public void gerarTabuleiro() {
+        this.limparTabuleiro();
+        this.tabuleiroInicial.clear();
+        this.gerarTabuleiroBackTracing(0, 0);
+    }
+
+    private void setTabuleiroInicial() {
+        for (int k = 0; k < this.linhas.length; k ++) {
+            for (int j = 0; j < this.linhas[k].length; j ++) {
+                if (this.linhas[k][j] != 0) {
+                    this.tabuleiroInicial.add(new BoardStart(k, j, this.linhas[k][j]));
+                }
+            }
+        }
+    }
+
     public int[] getPosicaoAtual() {
         return this.posicaoAtual;
     }
 
     public void setDificuldade(int dificuldade) {
         this.dificuldade = dificuldade;
-        this.limparTabuleiro();
-        this.gerarTabuleiroBackTracing(0, 0);
+        this.gerarTabuleiro();
     }
 
     public void alterarPosicaoAtual(int linha, int coluna) {
@@ -61,6 +78,12 @@ public class GameRules {
     public void alterarTabuleiro(int numeroEscolhido) {
         int linha = this.posicaoAtual[0];
         int coluna = this.posicaoAtual[1];
+
+        for (BoardStart posicaoValor: tabuleiroInicial) {
+            if (posicaoValor.getLinha() == linha && posicaoValor.getColuna() == coluna) {
+                return;
+            }
+        }
 
         this.linhas[linha][coluna] = numeroEscolhido;
     }
@@ -83,6 +106,7 @@ public class GameRules {
             }
 
             if (limiteLinhaDoBloco == 9 && limiteColunaDoBloco == 9) {
+                setTabuleiroInicial();
                 break;
             }
 
