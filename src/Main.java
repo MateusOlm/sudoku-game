@@ -89,7 +89,7 @@ public class Main {
 
     private static void exibirMenuDificuldade(Screen screen, TextGraphics tg, GameRules regras) throws IOException {
         boolean selecionando = true;
-        int opcaoSelecionada = 0; // 0 = Fácil, 1 = Médio, 2 = Difícil, 3 = Muito Difícil
+        int opcaoSelecionada = 0;
 
         while (selecionando) {
             screen.clear();

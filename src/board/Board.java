@@ -33,7 +33,6 @@ public class Board {
         StringBuilder sb = new StringBuilder();
         sb.append(BoxDrawing.VERTICAL_PESADO);
 
-        // Aplica o deslocamento horizontal (offsetX) no início da linha
         tg.putString(offsetX, cursorY, sb.toString());
         int cursorX = offsetX + sb.length();
 
@@ -57,7 +56,6 @@ public class Board {
         StringBuilder sb = new StringBuilder();
         sb.append(BoxDrawing.VERTICAL_PESADO);
 
-        // Aplica o deslocamento horizontal (offsetX) no início da linha
         tg.putString(offsetX, cursorY, sb.toString());
         int cursorX = offsetX + sb.length();
 
@@ -74,7 +72,7 @@ public class Board {
     }
 
     private void mostrarNumeroComFundo(TextGraphics tg, int x, int numero) {
-        tg.setBackgroundColor(TextColor.Indexed.fromRGB(128, 128, 128)); // Equivalente ao cinza 244
+        tg.setBackgroundColor(TextColor.Indexed.fromRGB(128, 128, 128));
         tg.setForegroundColor(TextColor.ANSI.WHITE);
 
         String nStr = (numero == 0) ? BoxDrawing.ESPACO : String.valueOf(numero);
@@ -90,7 +88,7 @@ public class Board {
     }
 
     public void tabuleiro(TextGraphics tg, int[][] linhas, int[] posicaoAtual) {
-        this.resetCursor(tg); // Passamos o TextGraphics para ler o tamanho atual do terminal
+        this.resetCursor(tg);
 
         this.superior(tg);
         for (int i = 0; i < linhas.length - 1; i++) {
@@ -162,7 +160,6 @@ public class Board {
         tg.putString(offsetX, cursorY, sb.toString());
         cursorY++;
 
-        // Caso ainda queira deixar o espaçamento duplo abaixo do tabuleiro de forma centralizada
         tg.putString(offsetX, cursorY, BoxDrawing.ESPACO_DOUBLE);
     }
 
